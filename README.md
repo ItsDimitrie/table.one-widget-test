@@ -11,9 +11,10 @@ _Describe how to deploy the project_
 
 ## URL to use in the script tag
 
-| Environment | URL                                                  |
-| ----------- | ---------------------------------------------------- |
-| Development | https://itsdimitrie.github.io/table.one-widget-test/ |
+| Environment          | URL                                                  |
+| -------------------- | ---------------------------------------------------- |
+| Development          | https://itsdimitrie.github.io/table.one-widget-test/ |
+| Test the widget here | https://itsdimitrie.github.io/vite-vue-testing/      |
 
 ## Testing test it out on localhost or any other method
 
