@@ -15,7 +15,7 @@
         color = config.color
 
         iframe = document.createElement("iframe");
-        iframe.src = "http://localhost:5173?restaurantId=" + restaurantId + "&color=" + color
+        iframe.src = "https://itsdimitrie.github.io/table.one-widget-test?restaurantId=" + restaurantId + "&color=" + color
         iframe.id = "reservation-widget-iframe";
         iframe.style.all = 'initial'
         iframe.style.position = 'fixed'
