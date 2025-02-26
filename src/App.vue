@@ -13,6 +13,23 @@ const isDateOpen = ref(false);
 const params = new URLSearchParams(window.location.search);
 const restaurantId = params.get('restaurantId');
 const color = params.get('color')
+let tailwindColor = 'bg-blue-200 bg-red-200 bg-green-200 bg-orange-200'
+
+// Voor de proof of concept zijn er 3 kleuren
+function changeWidgetColor() {
+  if (color === 'blue') {
+    tailwindColor = 'blue'
+ console.log(tailwindColor)
+  } else if (color === 'red') {
+    tailwindColor = 'red'
+  } else if (color === 'green') {
+    tailwindColor = 'green';
+  } else if  (color === 'orange') {
+    tailwindColor = 'orange';
+  } else {
+    tailwindColor = 'Ghost'
+  }
+}
 
 
 const Placeholder =
@@ -40,8 +57,6 @@ function sendSizeUpdate() {
   );
 }
 
-
-
 function toggleAmountPeople() {
   peopleSelector.value = !peopleSelector.value;
 }
@@ -60,17 +75,16 @@ function closeWidget() {
   sendSizeUpdate();
 }
 
-async function toggleWidget() {
+function toggleWidget() {
+  changeWidgetColor();
   isWidgetOpen.value = !isWidgetOpen.value;
   sendSizeUpdate();
+
 }
 
-// Set initial size when mounted
-
 onMounted(() => {
-sendSizeUpdate()
-});
-
+  sendSizeUpdate()
+  console.log('Widget color:', color);});
 </script>
 
 
@@ -91,10 +105,10 @@ sendSizeUpdate()
     <transition name="fade">
       <div
         v-if="isWidgetOpen && !isFormOpen"
-        :class="`widget-container bg-${color}-200 border border-white/20 p-5 rounded-2xl shadow-lg max-h-[95vh] overflow-y-auto`"
+        :class="`widget-container bg-${tailwindColor}-200 border border-white/20 p-5 rounded-2xl shadow-lg max-h-[95vh] overflow-y-auto`"
       >
         <div>
-          <div :class="`sticky top-0 bg-${color}-200`">
+          <div :class="`sticky top-0 bg-${tailwindColor}-200`">
           <!-- Header with close button -->
           <div class="flex justify-between items-center">
             <i
