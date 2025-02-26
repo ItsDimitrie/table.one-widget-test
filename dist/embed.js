@@ -15,14 +15,15 @@
         console.log(restaurantId)
 
         iframe = document.createElement("iframe");
-        // iframe.src = "https://itsdimitrie.github.io/table.one-widget-test?restaurantId=" + restaurantId + "&color=" + color
-        iframe.src = `http://localhost:5173/table.one-widget-test?restaurantId=${restaurantId}&color=${color}`;
+        iframe.src = ` https://itsdimitrie.github.io/table.one-widget-test?restaurantId=${restaurantId}&color=${color}`;
+        // iframe.src = `http://localhost:5173/table.one-widget-test?restaurantId=${restaurantId}&color=${color}`;
         iframe.id = "reservation-widget-iframe";
         iframe.style.all = 'initial'
         iframe.style.position = 'fixed'
         iframe.style.bottom = '1px'
         iframe.style.right = '1px'
 
+       
 
         if (divContainer) {
             divContainer.appendChild(iframe);
