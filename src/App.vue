@@ -38,19 +38,26 @@ const Placeholder =
 const state = {
   button: { width: '20vw', height: '10vh' },
   tickets: { width: '23vw', height: '90vh' },
-  reseveren: { width: '62vw', height: '90vh' }
+  reseveren: { width: '62vw', height: '90vh' },
+  mobile: {
+    button: { width: '80vw', height: '8vh' },
+    tickets: { width: '90vw', height: '85vh' },
+    reseveren: { width: '95vw', height: '90vh' }
+  },
 };
 
+function isMobile() {
+  return window.innerWidth <= 768;
+}
 function sendSizeUpdate() {
-  let newState = state.button;
-  
+  let newState = isMobile() ? state.mobile.button : state.button;
+
   if (isWidgetOpen.value && isFormOpen.value) {
-    newState = state.reseveren;
+    newState = isMobile() ? state.mobile.reseveren : state.reseveren;
   } else if (isWidgetOpen.value) {
-    newState = state.tickets;
+    newState = isMobile() ? state.mobile.tickets : state.tickets;
   }
 
-  // Stuur size naar de Embed.js
   window.parent.postMessage(
     { type: 'resizeWidget', width: newState.width, height: newState.height },
     '*'
@@ -193,7 +200,7 @@ onMounted(() => {
     <transition name="fade">
       <div
         v-if="isFormOpen && isWidgetOpen"
-        class="widget-container backdrop-blur-md bg-white/10 border border-white/20 p-5 rounded-2xl"
+        class="widget-container backdrop-blur-md bg-white/10 border border-white/20 p-5 rounded-2xl max-w-[90vw]"
       >
         <div class="flex justify-between items-center">
           <i
