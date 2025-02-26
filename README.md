@@ -25,3 +25,4 @@ _Describe how to deploy the project_
 ## Known Issues
 
 - Tailwind / Styling not working on GH pages. Will work when you import the widget on your website.
+- Safari tends to destroy the styling. Workaround for now is to use chrome.
