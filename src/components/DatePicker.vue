@@ -5,7 +5,7 @@ const selectedDate = ref<string | null>(null);
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div class="flex flex-col items-center justify-center bg-gray-100">
         <label for="date" class="mb-2 text-lg font-medium text-gray-700">Select a date:</label>
         <input
             type="date"
