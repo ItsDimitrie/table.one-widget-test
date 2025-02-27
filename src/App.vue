@@ -3,11 +3,13 @@ import { ref, onMounted } from 'vue';
 import AmountPeople from './components/AmountPeople.vue';
 import ReservationForm from './components/ReservationForm.vue';
 import DatePicker from './components/DatePicker.vue';
+import TimePicker from './components/TimePicker.vue';
 
 const isWidgetOpen = ref(false);
 const peopleSelector = ref(false);
 const isFormOpen = ref(false);
 const isDateOpen = ref(false);
+const isTimerOpen = ref(false)
 
 // Krijg data van de Embed.js
 const params = new URLSearchParams(window.location.search);
@@ -75,6 +77,10 @@ function toggleForm() {
 
 function toggleDatePicker() {
   isDateOpen.value = !isDateOpen.value;
+}
+
+function toggleTimePicker() {
+  isTimerOpen.value = !isTimerOpen.value;
 }
 
 function closeWidget() {
@@ -152,9 +158,11 @@ onMounted(() => {
             <!--Tijd-->
             <div class="bg-white rounded-md p-2 relative">
               <label class="pl-1 pr-5 text-sm italic">Tijd</label>
-              <button type="button" class="absolute right-2" @click="">
+              <button type="button" class="absolute right-2" @click="toggleTimePicker">
                 <i class="pi pi-angle-down"></i>
               </button>
+              <div v-if="isTimerOpen" class="">
+                <TimePicker />
             </div>
           </div>
 
@@ -170,6 +178,7 @@ onMounted(() => {
                 Suggesties
               </div>
             </div>
+          </div>
           </div>
           </div>
 
@@ -200,7 +209,7 @@ onMounted(() => {
     <transition name="fade">
       <div
         v-if="isFormOpen && isWidgetOpen"
-        class="widget-container backdrop-blur-md bg-white/10 border border-white/20 p-5 rounded-2xl max-w-[90vw]"
+        :class="`widget-container bg-${tailwindColor}-200 border border-white/20 p-5 rounded-2xl max-w-[90vw]`"
       >
         <div class="flex justify-between items-center">
           <i
